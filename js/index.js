@@ -3,13 +3,24 @@ const searchPhone = () =>{
     const searchText = searchField.value;
     console.log(searchText);
     searchField.value = '';
+    // error
+    document.getElementById('error-message').style.display = 'none';
+    if ( searchText == 0 ){
+       console.log('data not found')
+    }
+    else{
+        const url = ` https://openapi.programming-hero.com/api/phones?search=${searchText} `;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displaySearchResult(data.data.slice(0,20)))
+            .catch(error => displayError(error));
+    }
+    }
+    const displayError = error => {
+        document.getElementById('error-message').style.display = 'block';
+        console.log(error);
 
-    const url = `
-    https://openapi.programming-hero.com/api/phones?search=${searchText} `;
-   // console.log(url);
-    fetch(url)
-    .then(res => res.json())
-    .then(data => displaySearchResult (data.data.slice(0,20)));
+    
 
     // phone search result
 const displaySearchResult = data =>{
