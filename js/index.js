@@ -1,3 +1,5 @@
+document.getElementById('error-message').style.display = 'none';
+
 const searchPhone = () =>{
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
@@ -6,7 +8,7 @@ const searchPhone = () =>{
     // error
     document.getElementById('error-message').style.display = 'none';
     if ( searchText == 0 ){
-       console.log('data not found')
+       console.log('data not found');
     }
     else{
         const url = ` https://openapi.programming-hero.com/api/phones?search=${searchText} `;
@@ -17,8 +19,9 @@ const searchPhone = () =>{
     }
     }
     const displayError = error => {
-        document.getElementById('error-message').style.display = 'block';
-        console.log(error);
+      document.getElementById('error-message').style.display = 'block';
+      console.log(error);
+    }
 
     
 
@@ -36,7 +39,7 @@ const displaySearchResult = data =>{
       <div class="card-body">
       <h5 class="card-title">${brand.brand}</h5>
       <h5 class="card-title">${brand.phone_name}</h5>
-      <button onclick="loadPhoneDetail('${data.slug}')" type="button" class="btn btn-primary">Details</button>
+      <button type="button" class="btn btn-primary">Details</button>
       </div>
     </div>
        `;
@@ -44,7 +47,7 @@ const displaySearchResult = data =>{
 
     })
 
-}
+
 
 
 
